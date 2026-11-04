@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalStore - Plataforma Internacional de Comercio Electrónico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="locale-selectors">
+                <!-- Selectors linked to País, Moneda, and Idioma entities -->
+                <div class="select-group">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <select id="paisSelect" title="Seleccionar País">
+                        <option value="1" data-code="CO">Colombia (CO)</option>
+                        <option value="2" data-code="US">Estados Unidos (US)</option>
+                        <option value="3" data-code="ES">España (ES)</option>
+                        <option value="4" data-code="MX">México (MX)</option>
+                    </select>
+                </div>
+                <div class="select-group">
+                    <i class="fa-solid fa-coins"></i>
+                    <select id="monedaSelect" title="Seleccionar Moneda">
+                        <option value="1" data-code="COP" data-symbol="$" data-rate="1.000000">COP ($)</option>
+                        <option value="2" data-code="USD" data-symbol="USD $" data-rate="0.000260">USD ($)</option>
+                        <option value="3" data-code="EUR" data-symbol="€" data-rate="0.000240">EUR (€)</option>
+                        <option value="4" data-code="MXN" data-symbol="MX $" data-rate="0.004500">MXN ($)</option>
+                    </select>
+                </div>
+                <div class="select-group">
+                    <i class="fa-solid fa-language"></i>
+                    <select id="idiomaSelect" title="Seleccionar Idioma">
+                        <option value="1" data-code="es">Español</option>
+                        <option value="2" data-code="en">English</option>
+                    </select>
+                </div>
+            </div>
+            <div class="top-info">
+                <span><i class="fa-solid fa-truck-fast"></i> Cobertura Logística & Transportadoras Aliadas</span>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Global<span>Store</span></h1>
+            </div>
+
+            <!-- Categories bar built according to Categoría & idCategoriaPadre logic -->
+            <div class="category-nav">
+                <select id="categoriaFilter" title="Filtrar por Categoría">
+                    <option value="0">Todas las Categorías</option>
+                    <option value="1">Electrónica</option>
+                    <option value="2">-- Smartphones (Subcategoría)</option>
+                    <option value="3">-- Laptops (Subcategoría)</option>
+                    <option value="4">Moda & Calzado</option>
+                </select>
+            </div>
+
+            <div class="nav-icons">
+                <div class="cart-icon" id="cartBtn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Banner / Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Plataforma E-Commerce Internacional</h2>
+            <p>Catálogo multicategoría sincronizado con gestión de stock por bodega, múltiples monedas e impuestos por país.</p>
+            <a href="#catalog" class="btn">Explorar Productos</a>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <main class="container" id="catalog">
+        <div class="catalog-header">
+            <h2 class="section-title">Catálogo de Productos</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar por SKU o Nombre de Producto...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Dynamic products matching Producto, Marca, Categoría, Stock por Bodega, and Precio de Producto -->
+        </div>
+    </main>
+
+    <!-- Shipping Coverage & Logistics Section (Transportadora, Cobertura, Tarifa de Envío) -->
+    <section class="container coverage-section">
+        <h2 class="section-title">Red Logística & Cobertura de Envíos</h2>
+        <div class="coverage-grid">
+            <div class="coverage-card">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <h3>Stock por Bodega</h3>
+                <p>Verificación de inventarios en tiempo real desde nuestras bodegas por país de destino.</p>
+            </div>
+            <div class="coverage-card">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <h3>Transportadoras Aliadas</h3>
+                <p>Integración de tarifas y eventos de envío con guías de rastreo internacionales (DHL, FedEx, Coordinadora).</p>
+            </div>
+            <div class="coverage-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Impuestos & Tasas</h3>
+                <p>Cálculo automático de impuestos por país ($porcentajeImpuesto$) y conversión según la tasa de cambio vigente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal (Carrito, Detalle de Carrito, Pedido Checkout) -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-basket-shopping"></i> Mi Carrito de Compras</h3>
+                <span class="close-btn" id="closeCart">&times;</span>
+            </div>
+            <div class="cart-body" id="cartItems">
+                <p class="empty-msg">El carrito está vacío.</p>
+            </div>
+            
+            <!-- Checkout Form mapping to Cliente, Dirección, Pedido & Pago -->
+            <div class="checkout-form" id="checkoutForm" style="display:none;">
+                <h4>Datos de Envío (Dirección)</h4>
+                <div class="form-group">
+                    <input type="text" id="calleEnvio" placeholder="Calle / Dirección de envío" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="ciudadEnvio" placeholder="Ciudad" required>
+                    <input type="text" id="codigoPostalEnvio" placeholder="Código Postal">
+                </div>
+                
+                <h4>Método de Pago</h4>
+                <div class="form-group">
+                    <select id="metodoPagoSelect">
+                        <option value="Tarjeta de Crédito">Tarjeta de Crédito / Débito</option>
+                        <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                        <option value="PayPal">PayPal / Pasarela Digital</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="summary-details">
+                    <div class="summary-line"><span>Subtotal:</span> <span id="cartSubtotal">$0 COP</span></div>
+                    <div class="summary-line"><span>Impuestos (<span id="impuestoPorcentaje">19%</span>):</span> <span id="cartImpuestos">$0 COP</span></div>
+                    <div class="summary-line"><span>Envío Estimado:</span> <span id="cartEnvio">$0 COP</span></div>
+                    <hr>
+                    <div class="summary-line total"><span>Total Pedido:</span> <strong id="cartTotal">$0 COP</strong></div>
+                </div>
+                <button class="btn btn-checkout" id="btnCheckout" onclick="procesarPedido()">Confirmar y Procesar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GlobalStore E-Commerce — Sincronizado con base de datos <code>tienda_virtual</code></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
