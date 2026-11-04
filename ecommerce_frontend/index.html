@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AromaElite - E-commerce Internacional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="top-bar">
+            <div class="currency-selector">
+                <i class="fa-solid fa-globe"></i>
+                <label for="currencySelect">Moneda / País:</label>
+                <select id="currencySelect">
+                    <option value="COP" data-rate="1" data-symbol="$">COP - Colombia ($)</option>
+                    <option value="USD" data-rate="0.00026" data-symbol="$">USD - Estados Unidos ($)</option>
+                    <option value="EUR" data-rate="0.00024" data-symbol="€">EUR - Europa (€)</option>
+                    <option value="MXN" data-rate="0.0045" data-symbol="$">MXN - México ($)</option>
+                </select>
+            </div>
+            <div class="top-links">
+                <span><i class="fa-solid fa-truck-fast"></i> Envíos internacionales garantizados</span>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Aroma<span>Elite</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#catalog">Catálogo</a></li>
+                <li><a href="#cobertura">Cobertura & Envíos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" id="cartBtn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h2>Fragancias de Clase Mundial</h2>
+            <p>Descubre nuestra colección exclusiva con envíos a múltiples países y conversión de moneda en tiempo real.</p>
+            <a href="#catalog" class="btn">Explorar Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Product Catalog -->
+    <section id="catalog" class="container">
+        <h2 class="section-title">Catálogo de Productos</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- Products rendered dynamically via JS -->
+        </div>
+    </section>
+
+    <!-- Cobertura y Transportadoras Section -->
+    <section id="cobertura" class="container coverage-section">
+        <h2 class="section-title">Cobertura de Envíos Internacionales</h2>
+        <div class="coverage-grid">
+            <div class="coverage-card">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h3>Envíos Globales</h3>
+                <p>Cobertura en Colombia, EE.UU., México y la Unión Europea a través de nuestras alianzas logísticas.</p>
+            </div>
+            <div class="coverage-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Transportadoras Aliadas</h3>
+                <p>DHL, FedEx y Coordinadora garantizan que tu pedido llegue seguro a su destino.</p>
+            </div>
+            <div class="coverage-card">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <h3>Tasa de Cambio Transparente</h3>
+                <p>Conversión automática de precios según la moneda de tu país de origen/destino.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito de Compras</h3>
+                <span class="close-btn" id="closeCart">&times;</span>
+            </div>
+            <div class="cart-body" id="cartItems">
+                <p class="empty-msg">El carrito está vacío.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="total-price">
+                    <span>Total:</span>
+                    <strong id="cartTotal">$0 COP</strong>
+                </div>
+                <button class="btn btn-checkout" onclick="alert('¡Gracias por tu compra! Redirigiendo a pasarela de pago...')">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AromaElite E-Commerce. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
